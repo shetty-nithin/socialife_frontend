@@ -6,35 +6,76 @@ import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined"
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import {Link} from "react-router-dom";
 import Comments from "../comments/Comments";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import moment from "moment";
+import { useQuery, useQueryClient, useMutation } from "@tanstack/react-query";
+import { makeRequest } from "../../axios";
+import { AuthContext } from "../../context/authContext";
 
 const Post = ({post}) => {
     const [commentsOpen, setCommentsOpen] = useState(false);
-    //temp
-    const liked = false;
+    const [menuOpen, setMenuOpen] = useState(false);
+    const { currentUser } = useContext(AuthContext); 
+
+    const { isLoading, error, data } = useQuery({
+        queryKey: ["likes", post.id],
+        queryFn: () => makeRequest.get("/likes?postId="+post.id)
+        .then((res) => {
+            return res.data
+        })
+    });
+
+    const queryClient = useQueryClient();
+    const mutation = useMutation(
+       (liked) => {
+        if(liked) return makeRequest.delete("/likes?postId="+ post.id);
+        return makeRequest.post("/likes", {postId : post.id});
+       },
+       { onSuccess: () => {queryClient.invalidateQueries(["likes"])}}
+    )
+    const handleLike = () => {
+        mutation.mutate(data.includes(currentUser.id));
+    }
+
+    const deleteMutation = useMutation(
+       (postId) => {
+        return makeRequest.delete("/posts/"+postId);
+       },
+       { onSuccess: () => {queryClient.invalidateQueries(["posts"])}}
+    )
+    const handleDelete = () => {
+        setMenuOpen(!menuOpen);
+        deleteMutation.mutate(post.id);
+    }
+
     return(
         <div className="post">
             <div className="container">
                 <div className="user">
                     <div className="userInfo">
-                        <img src={post.profilePhoto} alt="" />
+                        <img src={"/upload/"+post.profilePhoto} alt="" />
                         <div className="details">
-                            <Link to={`profilePage/${post.userId}`} style={{textDecoration:"none", color:"inherit"}}>
+                            <Link to={`profile/${post.userId}`} style={{textDecoration:"none", color:"inherit"}}>
                                 <span className="name">{post.name}</span>
                             </Link>
-                            <span className="date">1 min ago</span>
+                            <span className="date">{moment(post.createdAt).fromNow()}</span>
                         </div>
                     </div>
-                    <MoreHorizIcon/>
+                    <MoreHorizIcon onClick={() => setMenuOpen(!menuOpen)}/>
+                    {menuOpen && post.userId === currentUser.id && <button onClick={handleDelete}>delete</button>}
                 </div>
-                <div className="content">
+                <div className="content" onClick={() => setMenuOpen(false)}>
                     <p>{post.desc}</p>
-                    <img src={post.profilePhoto} alt="" />
+                    <img src={"./upload/" + post.img} alt="" />
                 </div>
                 <div className="info">
                     <div className="item">
-                        {liked ? <FavoriteOutlinedIcon/> : <FavoriteBorderoutlinedIcon/>}
-                        12 Likes
+                        {isLoading
+                            ?   "loading..."
+                            :   data.includes(currentUser.id) 
+                                ?   <FavoriteOutlinedIcon style={{color: "red"}} onClick={handleLike}/> 
+                                :   <FavoriteBorderoutlinedIcon onClick={handleLike}/>}
+                        {data?.length} Likes
                     </div>
                     <div className="item" onClick={()=>setCommentsOpen(!commentsOpen)}>
                         <TextsmsOutlinedIcon/>
@@ -45,7 +86,8 @@ const Post = ({post}) => {
                         Share
                     </div>
                 </div>
-                {commentsOpen && <Comments/>}
+                {commentsOpen && <Comments postId={post.id
+                }/>}
             </div>
         </div>
     ) 
