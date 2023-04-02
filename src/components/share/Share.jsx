@@ -10,7 +10,6 @@ import { makeRequest } from "../../axios.js";
 const Share = () => {
     const [desc, setDesc] = useState(null);
     const [file, setFile] = useState("");
-    
     const {currentUser} = useContext(AuthContext);
     
     const upload = async () => {
@@ -36,7 +35,6 @@ const Share = () => {
         
     const  handleClick = async (e) => {
         e.preventDefault();
-        console.log("desc is :", desc);
         let imgUrl = "";
         if(file) imgUrl = await upload();
         mutation.mutate({desc, img: imgUrl});

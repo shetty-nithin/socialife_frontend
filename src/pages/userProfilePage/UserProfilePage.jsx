@@ -2,7 +2,6 @@ import "./UserProfilePage.scss"
 import FacebookTwoToneIcon from "@mui/icons-material/FacebookTwoTone";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import InstagramIcon from "@mui/icons-material/Instagram";
-import PinterestIcon from "@mui/icons-material/Pinterest";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import PlaceIcon from "@mui/icons-material/Place";
 import LanguageIcon from "@mui/icons-material/Language";
@@ -14,7 +13,7 @@ import Update from "../../components/update/Update";
 import { useQuery, useQueryClient, useMutation } from "@tanstack/react-query";
 import { makeRequest } from "../../axios";
 import { useLocation } from "react-router-dom";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/authContext";
 
 const UserProfilePage = () => {
@@ -28,7 +27,9 @@ const UserProfilePage = () => {
         queryFn: () => makeRequest.get("/users/find/"+userId)
         .then((res) => {
             return res.data
-        })
+        }),
+        staleTime: 0,
+        cacheTime: 0
     });
 
     const {isLoading: rIsLoading, data: relationshipData} = useQuery({
@@ -36,19 +37,24 @@ const UserProfilePage = () => {
         queryFn: () => makeRequest.get("/relationships?followedUserId="+userId)
         .then((res) => {
             return res.data
-        })
+        }),
+        staleTime: 0,
+        cacheTime: 0
     });
-
 
     const queryClient = useQueryClient();
     const mutation = useMutation(
-       (follwing) => {
-        if(follwing) return makeRequest.delete("/relationships?userId="+ userId);
+       (following) => { // "following" is a parameter not an if condition
+        if(following) return makeRequest.delete("/relationships?userId="+ userId);
         return makeRequest.post("/relationships", {userId});
        },
        {
-        onSuccess: () => {queryClient.invalidateQueries(["relationship"])}
-       }
+        onSuccess: () => {
+            queryClient.invalidateQueries(["relationship"]);
+            queryClient.invalidateQueries(["suggestion"]);
+            queryClient.invalidateQueries(["friendsOnline"]);
+        }
+       },
     )
 
     const handleFollow = () => {

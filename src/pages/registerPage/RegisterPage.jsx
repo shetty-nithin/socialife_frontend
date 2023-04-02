@@ -20,6 +20,7 @@ const RegisterPage = () => {
         e.preventDefault();
         try {
             await axios.post("http://localhost:8080/api/auth/register", inputs);
+            setInputs({username:"", email:"", password:"", name:""});
         }catch(err){
             setErr(err.response.data);    
         }
@@ -39,11 +40,12 @@ const RegisterPage = () => {
                 <div className="right">
                     <h1>Register</h1>
                     <form>
-                        <input type="text" placeholder="Username" name="username" onChange={handleChange}/>
-                        <input type="email" placeholder="Email" name="email" onChange={handleChange}/>
-                        <input type="password" placeholder="Password" name="password" onChange={handleChange}/>
-                        <input type="text" placeholder="Name" name="name" onChange={handleChange}/>
-                        {err && err}
+                        {/* {successfull && <span style={{color: 'green'}}>Registered successfully!</span>} */}
+                        <input type="text" placeholder="Username" value={inputs.username} name="username" onChange={handleChange}/>
+                        <input type="email" placeholder="Email" value={inputs.email} name="email" onChange={handleChange}/>
+                        <input type="password" placeholder="Password" value={inputs.password} name="password" onChange={handleChange}/>
+                        <input type="text" placeholder="Name" value={inputs.name} name="name" onChange={handleChange}/>
+                        {err && <span style={{color: "red"}}>{err}</span>}
                         <button onClick={handleClick}>Register</button>
                     </form>
                 </div>

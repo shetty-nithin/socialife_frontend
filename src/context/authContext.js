@@ -12,6 +12,7 @@ export const AuthContextProvider = ({children}) => {
         const res = await axios.post("http://localhost:8080/api/auth/login", inputs, {
             withCredentials : true
         });
+        console.log("res from authContext : ", res);
         setCurrentUser(res.data);
     }
     useEffect(() => {

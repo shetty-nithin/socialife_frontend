@@ -79,15 +79,14 @@ const Post = ({post}) => {
                     </div>
                     <div className="item" onClick={()=>setCommentsOpen(!commentsOpen)}>
                         <TextsmsOutlinedIcon/>
-                        4 Comments
+                        Comments
                     </div>
                     <div className="item">
                         <ShareOutlinedIcon/>
                         Share
                     </div>
                 </div>
-                {commentsOpen && <Comments postId={post.id
-                }/>}
+                {commentsOpen && <Comments postId={post.id}/>}
             </div>
         </div>
     ) 

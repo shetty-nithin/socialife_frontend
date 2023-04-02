@@ -30,9 +30,11 @@
                 border: 1px solid themed("border");
                 border-radius: 5px;
                 padding: 5px;
+                position: relative;
 
                 input{
                     border: none;
+                    outline: none;
                     width: 500px;
                     background-color: transparent;
                     color: themed("textColor");
@@ -61,6 +63,7 @@
                 align-items: center;
                 gap: 10px;
                 font-weight: 500;
+                cursor: pointer;
 
                 @include tablet{
                     display: none;
@@ -72,8 +75,20 @@
                    border-radius: 50%; 
                    object-fit: cover;
                 }
-                span{
-    
+                .logOut{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                }
+            
+                .logOutButton {
+                    top: 30px;
+                    right: 0;
+                    border: none;
+                    background-color: #f0544f;
+                    padding: 5px;
+                    cursor: pointer;
+                    color: white;
                 }
             }
         }

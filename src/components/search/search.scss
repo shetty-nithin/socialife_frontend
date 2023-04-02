@@ -1,0 +1,44 @@
+@import "../../style.scss";
+
+.searchList{
+    @include themify($themes){
+        position: absolute; 
+        top: 35px;
+        left: 40px;
+        background-color: rgb(205, 235, 225);
+        min-height: 30px;
+        width: 300px;
+        padding: 1px 5px;
+        align-items: center;
+        justify-content: center;
+        
+        .searchUser{
+            display: flex;
+            width: 100%;
+            height: 40px;
+            justify-content: space-around;
+            align-items: center;
+            color: black;
+            
+            img{
+                height: 30px;
+                width: 30px;
+                border-radius: 50%;
+                object-fit: cover;
+            }
+            span{
+                width: 70%;
+                font-size: 14px;
+                font-weight: normal;
+                color: black;
+            }
+        }
+
+        .searchUser:hover{
+            background-color: rgb(157, 206, 190);
+            span{
+                font-weight: bold;
+            }
+        }
+    }
+}

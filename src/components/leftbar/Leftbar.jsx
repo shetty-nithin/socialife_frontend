@@ -12,24 +12,28 @@ import Messages from "../../assets/10.png"
 import Tutorials from "../../assets/11.png"
 import Courses from "../../assets/12.png"
 import Fund from "../../assets/13.png"
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../context/authContext";
+import { useNavigate } from "react-router-dom";
+import Followers from "../followers/Follower";
 
 const Leftbar = () => {
-    
+    const [followersList, setFollowersList] = useState(false)
     const {currentUser} = useContext(AuthContext);
+    const navigate = useNavigate();
 
     return (
         <div className="leftbar">
             <div className="container">
                 <div className="menu">
-                    <div className="user">
+                    <div className="user" onClick={() => navigate("/")}>
                         <img src={"/upload/"+currentUser.profilePhoto} alt=""/>
                         <span>{currentUser.name}</span>
                     </div>
-                    <div className="item">
+                    <div className="item" style={{cursor: "pointer"}}>
                         <img src={Friends} alt="" />
-                        <span>Friends</span>
+                        <span onClick={() => setFollowersList(!followersList)}>Followers</span>
+                        {followersList && <Followers/>}
                     </div>
                     <div className="item">
                         <img src={Groups} alt="" />
@@ -73,21 +77,6 @@ const Leftbar = () => {
                     </div>
                 </div>
                 <hr/>
-                <div className="menu">
-                    <span>Others</span>
-                    <div className="item">
-                        <img src={Fund} alt="" />
-                        <span>Fundraisers</span>
-                    </div>
-                    <div className="item">
-                        <img src={Tutorials} alt="" />
-                        <span>Tutorials</span>
-                    </div>
-                    <div className="item">
-                        <img src={Courses} alt="" />
-                        <span>Courses</span>
-                    </div>
-                </div>
             </div>
         </div>
     )

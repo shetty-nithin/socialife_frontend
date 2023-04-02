@@ -22,6 +22,8 @@
                 border: 1px solid themed("border");
                 background-color: transparent;
                 color: themed("textColor");
+                max-width: 30vw;
+                overflow: hidden;
             }
             button{
                 border: none;
@@ -35,8 +37,10 @@
 
         .comment{
             margin: 30px 0px;
+            width: 100%;
             display: flex;
             justify-content: space-between;
+            align-items: center;
             gap: 20px;
 
             .info{
@@ -59,6 +63,21 @@
                 color: gray;
                 font-size: 12px;
             }
+            // .editDelete{
+            //     display: flex;
+            //     flex-direction: column;
+            //     justify-content: space-between;
+            //     align-items: center;
+            //     height: 10vh;
+            //     width: 10vh;
+            //     background-color: aliceblue;
+
+            //     button{
+            //         height: 3vh;
+            //         width: 8vh;
+            //     }
+            // }
+            
         }
     }
 }

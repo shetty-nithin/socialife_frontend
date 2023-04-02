@@ -63,7 +63,7 @@ return (
                     <label htmlFor="cover">
                         <span>Cover Picture</span>
                         <div className="imgContainer">
-                            <img src={cover ? URL.createObjectURL(cover) : "/upload/" + user.coverPic} alt=""/>
+                            <img src={cover ? URL.createObjectURL(cover) : "/upload/" + user.coverPhoto} alt=""/>
                             <CloudUploadIcon className="icon" />
                         </div>
                     </label>
@@ -71,7 +71,7 @@ return (
                     <label htmlFor="profile">
                         <span>Profile Picture</span>
                         <div className="imgContainer">
-                            <img src={profile ? URL.createObjectURL(profile) : "/upload/" + user.profilePic} alt=""/>
+                            <img src={profile ? URL.createObjectURL(profile) : "/upload/" + user.profilePhoto} alt=""/>
                             <CloudUploadIcon className="icon" />
                         </div>
                     </label>

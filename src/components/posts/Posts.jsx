@@ -2,6 +2,7 @@ import Post from "../post/Post";
 import "./posts.scss";
 import { useQuery } from "@tanstack/react-query";
 import { makeRequest } from "../../axios";
+import { useNavigate } from "react-router-dom";
 
 const Posts = ({userId}) => {
     const { isLoading, error, data } = useQuery({
@@ -10,7 +11,11 @@ const Posts = ({userId}) => {
         .then((res) => {
             return res.data
         })
-    })
+    });
+    const navigate = useNavigate();
+    if(error){
+        navigate("/login");
+    }
     
     return(
         <div className="posts">

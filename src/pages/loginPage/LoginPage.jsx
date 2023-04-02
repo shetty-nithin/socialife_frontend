@@ -1,5 +1,5 @@
 import { useContext, useState } from "react"
-import { Link, useNavigate, useNavigation } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { AuthContext } from "../../context/authContext"
 import "./loginPage.scss"
 
@@ -42,7 +42,7 @@ const LoginPage = () => {
                     <form>
                         <input type="text" placeholder="Username" name="username" onChange={handleChange}/>
                         <input type="password" placeholder="Password" name="password" onChange={handleChange}/>
-                        {err && err}
+                        {err && <span style={{color: "red"}}>{err}</span>}
                         <button onClick={handleLogin}>Login</button>
                     </form>
                 </div>
