@@ -36,7 +36,6 @@ const Navbar = () => {
         }
     }
 
-
     const handleChange = (e) => {
         if(!e.target.value){
             setSearchInput("");

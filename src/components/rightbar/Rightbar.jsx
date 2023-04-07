@@ -1,7 +1,7 @@
-import { useContext } from "react";
+import { useContext} from "react";
 import { makeRequest } from "../../axios";
 import "./rightbar.scss";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { AuthContext } from "../../context/authContext";
 
 const Rightbar = () => {
@@ -26,6 +26,23 @@ const Rightbar = () => {
         cacheTime: 0,
     });
 
+    const queryClient = useQueryClient();
+    const mutation = useMutation(
+        (userId) => {
+            return makeRequest.post("/relationships", {userId});
+        },
+        {
+            onSuccess: () => {
+                queryClient.invalidateQueries(["suggestion"]);
+                queryClient.invalidateQueries(["friendsOnline"]);
+            }
+        }
+    )
+
+    const handleFollow = (suggUserId) => {
+        mutation.mutate(suggUserId);
+    }
+    
     return (
         <div className="rightbar">
             <div className="container">
@@ -44,7 +61,7 @@ const Rightbar = () => {
                                                     <span>{suggestedUser.name}</span>
                                                 </div>
                                                 <div className="buttons">
-                                                    <button>follow</button>
+                                                    <button onClick={() => handleFollow(suggestedUser.finalFollowedUserId)}>follow</button>
                                                 </div>
                                             </div>
                                         ))

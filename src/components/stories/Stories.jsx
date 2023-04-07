@@ -9,37 +9,37 @@ const Stories = () => {
     const stories = [
         {
             id: 8,
-            name: "nithin shetty",
+            name: "",
             img: "https://images.pexels.com/photos/3314294/pexels-photo-3314294.jpeg?auto=compress&cs=tinysrgb&w=400"
         },
         {
             id: 7,
-            name: "nithin shetty",
+            name: "",
             img: "https://images.pexels.com/photos/3314294/pexels-photo-3314294.jpeg?auto=compress&cs=tinysrgb&w=400"
         },
         {
             id: 1,
-            name: "nithin shetty",
+            name: "",
             img: "https://images.pexels.com/photos/3314294/pexels-photo-3314294.jpeg?auto=compress&cs=tinysrgb&w=400"
         },
         {
             id: 2,
-            name: "nithin shetty",
+            name: "",
             img: "https://images.pexels.com/photos/3314294/pexels-photo-3314294.jpeg?auto=compress&cs=tinysrgb&w=400"
         },
         {
             id: 3,
-            name: "nithin shetty",
+            name: "",
             img: "https://images.pexels.com/photos/3314294/pexels-photo-3314294.jpeg?auto=compress&cs=tinysrgb&w=400"
         },
         {
             id: 4,
-            name: "nithin shetty",
+            name: "",
             img: "https://images.pexels.com/photos/3314294/pexels-photo-3314294.jpeg?auto=compress&cs=tinysrgb&w=400"
         },
         {
             id: 5,
-            name: "nithin shetty",
+            name: "",
             img: "https://images.pexels.com/photos/3314294/pexels-photo-3314294.jpeg?auto=compress&cs=tinysrgb&w=400"
         }
     ]
