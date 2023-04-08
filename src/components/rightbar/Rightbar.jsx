@@ -35,6 +35,7 @@ const Rightbar = () => {
             onSuccess: () => {
                 queryClient.invalidateQueries(["suggestion"]);
                 queryClient.invalidateQueries(["friendsOnline"]);
+                queryClient.invalidateQueries(["posts"]);
             }
         }
     )

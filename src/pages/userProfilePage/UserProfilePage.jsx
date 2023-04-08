@@ -53,6 +53,7 @@ const UserProfilePage = () => {
             queryClient.invalidateQueries(["relationship"]);
             queryClient.invalidateQueries(["suggestion"]);
             queryClient.invalidateQueries(["friendsOnline"]);
+            queryClient.invalidateQueries(["posts"]);
         }
        },
     )
