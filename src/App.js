@@ -1,6 +1,6 @@
 import LoginPage from "./pages/loginPage/LoginPage";
 import RegisterPage from "./pages/registerPage/RegisterPage";
-import { createBrowserRouter, RouterProvider, Route, Navigate, Outlet } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, Navigate, Outlet } from "react-router-dom";
 import Navbar from "./components/navbar/Navbar";
 import Leftbar from "./components/leftbar/Leftbar";
 import Rightbar from "./components/rightbar/Rightbar"

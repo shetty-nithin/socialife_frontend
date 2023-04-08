@@ -9,9 +9,6 @@ import Gaming from "../../assets/7.png"
 import Gallery from "../../assets/8.png"
 import Video from "../../assets/9.png"
 import Messages from "../../assets/10.png"
-import Tutorials from "../../assets/11.png"
-import Courses from "../../assets/12.png"
-import Fund from "../../assets/13.png"
 import { useContext, useState } from "react";
 import { AuthContext } from "../../context/authContext";
 import { useNavigate } from "react-router-dom";
