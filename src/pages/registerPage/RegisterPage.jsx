@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
 import "./registerPage.scss"
-import axios from "axios";
+import { makeRequest } from "../../axios";
 
 const RegisterPage = () => {
     
@@ -19,7 +19,7 @@ const RegisterPage = () => {
     const handleClick = async (e) => {
         e.preventDefault();
         try {
-            await axios.post("http://localhost:8080/api/auth/register", inputs);
+            await makeRequest.post("/auth/register", inputs, {withCredentials: true});
             setInputs({username:"", email:"", password:"", name:""});
         }catch(err){
             setErr(err.response.data);    

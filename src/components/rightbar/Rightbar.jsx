@@ -8,7 +8,7 @@ const Rightbar = () => {
     const { currentUser } = useContext(AuthContext);
     const {isLoading, error, data} = useQuery({
         queryKey: ["friendsOnline"],
-        queryFn: () => makeRequest.get("/relationships/followed?userId="+currentUser.id)
+        queryFn: () => makeRequest.get("/relationships/followed?userId="+currentUser.id, {withCredentials: true})
         .then((res) => {
             return res.data;
         }),
@@ -18,7 +18,7 @@ const Rightbar = () => {
 
     const { isLoading: suggIsLoading, error: suggError, data: suggData } = useQuery({
         queryKey: ["suggestion"],
-        queryFn: () => makeRequest.get("relationships/suggestions?userId="+currentUser.id)
+        queryFn: () => makeRequest.get("relationships/suggestions?userId="+currentUser.id, {withCredentials: true})
         .then((res) => {
             return res.data;
         }),
@@ -29,7 +29,7 @@ const Rightbar = () => {
     const queryClient = useQueryClient();
     const mutation = useMutation(
         (userId) => {
-            return makeRequest.post("/relationships", {userId});
+            return makeRequest.post("/relationships", {userId}, {withCredentials: true});
         },
         {
             onSuccess: () => {

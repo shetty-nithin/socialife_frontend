@@ -19,7 +19,7 @@ const Post = ({post}) => {
 
     const { isLoading, data } = useQuery({ // { isLoading, error, data }
         queryKey: ["likes", post.id],
-        queryFn: () => makeRequest.get("/likes?postId="+post.id)
+        queryFn: () => makeRequest.get("/likes?postId="+post.id, {withCredentials: true})
         .then((res) => {
             return res.data
         })
@@ -28,8 +28,8 @@ const Post = ({post}) => {
     const queryClient = useQueryClient();
     const mutation = useMutation(
        (liked) => {
-        if(liked) return makeRequest.delete("/likes?postId="+ post.id);
-        return makeRequest.post("/likes", {postId : post.id});
+        if(liked) return makeRequest.delete("/likes?postId="+ post.id, {withCredentials: true});
+        return makeRequest.post("/likes", {postId : post.id}, {withCredentials: true});
        },
        { onSuccess: () => {queryClient.invalidateQueries(["likes"])}}
     )
@@ -39,7 +39,7 @@ const Post = ({post}) => {
 
     const deleteMutation = useMutation(
        (postId) => {
-        return makeRequest.delete("/posts/"+postId);
+        return makeRequest.delete("/posts/"+postId, {withCredentials: true});
        },
        { onSuccess: () => {queryClient.invalidateQueries(["posts"])}}
     )

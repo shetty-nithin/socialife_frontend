@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 const Posts = ({userId}) => {
     const { isLoading, error, data } = useQuery({
         queryKey: ["posts"],
-        queryFn: () => makeRequest.get("/posts?userId="+userId)
+        queryFn: () => makeRequest.get("/posts?userId="+userId, {withCredentials: true})
         .then((res) => {
             return res.data
         })

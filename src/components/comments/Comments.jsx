@@ -11,7 +11,7 @@ const Comments = ({postId}) => {
     const {currentUser} = useContext(AuthContext)
     const { isLoading, error, data } = useQuery({
         queryKey: ["comments"],
-        queryFn: () => makeRequest.get("/comments?postId="+postId)
+        queryFn: () => makeRequest.get("/comments?postId="+postId, {withCredentials: true})
         .then((res) => {
             return res.data
         })
@@ -20,7 +20,7 @@ const Comments = ({postId}) => {
     const queryClient = useQueryClient();
     const mutation = useMutation(
        (newComment) => {
-        return makeRequest.post("/comments", newComment);
+        return makeRequest.post("/comments", newComment, {withCredentials: true});
        },
        {
         onSuccess: () => {queryClient.invalidateQueries(["comments"])}

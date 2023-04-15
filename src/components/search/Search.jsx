@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const Search = ({ searchInput }) => {
     const {isLoading, error, data} = useQuery({
         queryKey: [searchInput],
-        queryFn: () => makeRequest.get("/users?name="+searchInput.searchInput)
+        queryFn: () => makeRequest.get("/users?name="+searchInput.searchInput, {withCredentials: true})
         .then((res) => {
             return res.data;
         })

@@ -16,7 +16,7 @@ const Share = () => {
         try{
             const formData = new FormData();
             formData.append("file", file);
-            const res = await makeRequest.post("/upload", formData);
+            const res = await makeRequest.post("/upload", formData, {withCredentials: true});
             return res.data;
         }catch(err){
             console.log(err);
@@ -26,7 +26,7 @@ const Share = () => {
     const queryClient = useQueryClient();
     const mutation = useMutation(
         (newPost) => {
-            return makeRequest.post("/posts", newPost);
+            return makeRequest.post("/posts", newPost, {withCredentials: true});
         },
         {
             onSuccess: () => {queryClient.invalidateQueries(["posts"])}

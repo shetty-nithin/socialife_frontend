@@ -23,7 +23,7 @@ const UserProfilePage = () => {
 
     const { isLoading, error, data } = useQuery({
         queryKey: ["user"],
-        queryFn: () => makeRequest.get("/users/find/"+userId)
+        queryFn: () => makeRequest.get("/users/find/"+userId, {withCredentials: true})
         .then((res) => {
             return res.data
         }),
@@ -33,7 +33,7 @@ const UserProfilePage = () => {
 
     const {isLoading: rIsLoading, data: relationshipData} = useQuery({
         queryKey: ["relationship"],
-        queryFn: () => makeRequest.get("/relationships?followedUserId="+userId)
+        queryFn: () => makeRequest.get("/relationships?followedUserId="+userId, {withCredentials: true})
         .then((res) => {
             return res.data
         }),
@@ -44,8 +44,8 @@ const UserProfilePage = () => {
     const queryClient = useQueryClient();
     const mutation = useMutation(
        (following) => { // "following" is a parameter not an if condition
-        if(following) return makeRequest.delete("/relationships?userId="+ userId);
-        return makeRequest.post("/relationships", {userId});
+        if(following) return makeRequest.delete("/relationships?userId="+ userId, {withCredentials: true});
+        return makeRequest.post("/relationships", {userId}, {withCredentials: true});
        },
        {
         onSuccess: () => {

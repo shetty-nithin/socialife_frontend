@@ -9,7 +9,7 @@ const Followers = () => {
     const { currentUser } = useContext(AuthContext);
     const { isLoading, error, data } = useQuery({
         queryKey: ["followers"],
-        queryFn: () => makeRequest.get("/relationships/followers?userId="+currentUser.id)
+        queryFn: () => makeRequest.get("/relationships/followers?userId="+currentUser.id, {withCredentials: true})
         .then((res) => {
             return res.data;
         })

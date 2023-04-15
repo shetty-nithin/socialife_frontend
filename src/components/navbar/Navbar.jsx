@@ -27,7 +27,7 @@ const Navbar = () => {
     
     const handleLogOut = async () => {
         try {
-            await makeRequest.post("/auth/logout/"+currentUser.id);
+            await makeRequest.post("/auth/logout/"+currentUser.id, {withCredentials: true});
             localStorage.removeItem("user");
             setLogOutMenu(false);
             navigate("/login");

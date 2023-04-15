@@ -20,7 +20,7 @@ const Update = ({setOpenUpdate, user}) => {
         try{
             const formData = new FormData();
             formData.append("file", file);
-            const res = await makeRequest.post("/upload", formData);
+            const res = await makeRequest.post("/upload", formData, {withCredentials: true});
             return res.data;
         }catch(err){
             console.log(err);
@@ -34,7 +34,7 @@ const Update = ({setOpenUpdate, user}) => {
     const queryClient = useQueryClient();
     const mutation = useMutation(
         (user) => {
-            return makeRequest.put("/users", user);
+            return makeRequest.put("/users", user, {withCredentials: true});
         },
         {
             onSuccess: () => {queryClient.invalidateQueries(["user"])}
