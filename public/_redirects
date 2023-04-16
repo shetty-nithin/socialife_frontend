@@ -1,1 +1,1 @@
-/netlify-site/* https://socialife-api.netlify.app/:splat 200
+/api/* https://socialife-api.netlify.app/:splat 200
