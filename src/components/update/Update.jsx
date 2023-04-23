@@ -1,10 +1,9 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { makeRequest } from "../../axios";
 import "./update.scss";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import axios from "axios";
-import { AuthContext } from "../../context/authContext";
 
 const Update = ({setOpenUpdate, user}) => {
     const [texts, setTexts] = useState({
