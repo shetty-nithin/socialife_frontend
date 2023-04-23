@@ -69,8 +69,8 @@ const UserProfilePage = () => {
                     ? "loading..." 
                     :   <>
                             <div className="images">
-                                <img src={"/upload/"+data.coverPhoto} alt="" className="cover"/>
-                                <img src={"/upload/"+data.profilePhoto} alt="" className="profilePhoto"/>
+                                <img src={data.coverPhoto} alt="" className="cover"/>
+                                <img src={data.profilePhoto} alt="" className="profilePhoto"/>
                             </div>
                             <div className="profileContainer">
                                 <div className="uInfo">

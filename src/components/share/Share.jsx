@@ -6,6 +6,7 @@ import Map from "../../assets/map.png";
 import Friend from "../../assets/friend.png";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { makeRequest } from "../../axios.js";
+import axios from "axios";
 
 const Share = () => {
     const [desc, setDesc] = useState(null);
@@ -16,8 +17,10 @@ const Share = () => {
         try{
             const formData = new FormData();
             formData.append("file", file);
-            const res = await makeRequest.post("/upload", formData, {withCredentials: true});
-            return res.data;
+            formData.append("upload_preset", "socialife")
+            const res = await axios.post("https://api.cloudinary.com/v1_1/dmydn76la/image/upload", formData);
+            const { url } = res.data;
+            return url;
         }catch(err){
             console.log(err);
         }
@@ -47,7 +50,7 @@ const Share = () => {
             <div className="container">
                 <div className="top">
                     <div className="left">
-                        <img src={"/upload/"+currentUser.profilePhoto} alt="" />
+                        <img src={currentUser.profilePhoto} alt="" />
                         <input type="text" placeholder={`what's on your mind ${currentUser.name}?`} onChange={(e) => setDesc(e.target.value)} value={desc}/>
                     </div>
                     <div className="right">

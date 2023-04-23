@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { makeRequest } from "../../axios";
 import "./update.scss";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
+import axios from "axios";
+import { AuthContext } from "../../context/authContext";
 
 const Update = ({setOpenUpdate, user}) => {
     const [texts, setTexts] = useState({
@@ -15,13 +17,14 @@ const Update = ({setOpenUpdate, user}) => {
     const [cover, setCover] = useState(null);
     const [profile, setProfile] = useState(null);
 
-
     const upload = async (file) => {
         try{
             const formData = new FormData();
             formData.append("file", file);
-            const res = await makeRequest.post("/upload", formData, {withCredentials: true});
-            return res.data;
+            formData.append("upload_preset", "socialife")
+            const res = await axios.post("https://api.cloudinary.com/v1_1/dmydn76la/image/upload", formData);
+            const { url } = res.data;
+            return url;
         }catch(err){
             console.log(err);
         }
@@ -37,7 +40,9 @@ const Update = ({setOpenUpdate, user}) => {
             return makeRequest.put("/users", user, {withCredentials: true});
         },
         {
-            onSuccess: () => {queryClient.invalidateQueries(["user"])}
+            onSuccess: () => {
+                queryClient.invalidateQueries(["user"]);
+            }
         }
     )
 
@@ -63,7 +68,7 @@ return (
                     <label htmlFor="cover">
                         <span>Cover Picture</span>
                         <div className="imgContainer">
-                            <img src={cover ? URL.createObjectURL(cover) : "/upload/" + user.coverPhoto} alt=""/>
+                            <img src={cover ? URL.createObjectURL(cover) : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"} alt="" />
                             <CloudUploadIcon className="icon" />
                         </div>
                     </label>
@@ -71,7 +76,7 @@ return (
                     <label htmlFor="profile">
                         <span>Profile Picture</span>
                         <div className="imgContainer">
-                            <img src={profile ? URL.createObjectURL(profile) : "/upload/" + user.profilePhoto} alt=""/>
+                            <img src={profile ? URL.createObjectURL(profile) : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"} alt=""/>
                             <CloudUploadIcon className="icon" />
                         </div>
                     </label>

@@ -53,7 +53,7 @@ const Post = ({post}) => {
             <div className="container">
                 <div className="user">
                     <div className="userInfo">
-                        <img src={"/upload/"+post.profilePhoto} alt="" />
+                        <img src={post.profilePhoto} alt="" />
                         <div className="details">
                             <Link to={`profile/${post.userId}`} style={{textDecoration:"none", color:"inherit"}}>
                                 <span className="name">{post.name}</span>
@@ -66,7 +66,7 @@ const Post = ({post}) => {
                 </div>
                 <div className="content" onClick={() => setMenuOpen(false)}>
                     <p>{post.desc}</p>
-                    <img src={"./upload/" + post.img} alt="" />
+                    <img src={post.img} alt="" />
                 </div>
                 <div className="info">
                     <div className="item">

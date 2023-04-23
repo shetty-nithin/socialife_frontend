@@ -26,7 +26,7 @@ const Followers = () => {
                             :   data.map(follower => (
                                     <Link to={`profile/${follower.userId}`} style={{textDecoration:"none"}}>
                                         <div className="follower">
-                                            <img src={"/upload/"+follower.profilePhoto} alt="" />
+                                            <img src={follower.profilePhoto} alt="" />
                                             <span>{follower.name}</span>
                                         </div>
                                     </Link>

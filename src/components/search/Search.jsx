@@ -23,7 +23,7 @@ const Search = ({ searchInput }) => {
                             :   data.map(user => (
                                     <Link key={user.id} to={`profile/${user.id}`} style={{textDecoration:"none"}}>
                                         <div className="searchUser">
-                                            <img src={"/upload/"+user.profilePhoto} alt="" />
+                                            <img src={user.profilePhoto} alt="" />
                                             <span>{user.name}</span>
                                         </div>
                                     </Link>

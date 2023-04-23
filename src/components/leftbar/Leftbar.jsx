@@ -24,7 +24,7 @@ const Leftbar = () => {
             <div className="container">
                 <div className="menu">
                     <div className="user" onClick={() => navigate("/")}>
-                        <img src={"/upload/"+currentUser.profilePhoto} alt=""/>
+                        <img src={currentUser.profilePhoto} alt=""/>
                         <span>{currentUser.name}</span>
                     </div>
                     <div className="item" style={{cursor: "pointer"}}>

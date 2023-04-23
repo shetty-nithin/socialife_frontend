@@ -58,7 +58,7 @@ const Rightbar = () => {
                                     :   suggData.map(suggestedUser => (
                                             <div className="user" key={suggestedUser.finalFollowedUserId}>
                                                 <div className="userInfo">
-                                                    <img src={"/upload/"+suggestedUser.profilePhoto} alt="" />
+                                                    <img src={suggestedUser.profilePhoto} alt="" />
                                                     <span>{suggestedUser.name}</span>
                                                 </div>
                                                 <div className="buttons">
@@ -72,7 +72,7 @@ const Rightbar = () => {
                     <span>Latest Activities</span>
                     <div className="user">
                         <div className="userInfo">
-                            <img src={"/upload/"+currentUser.profilePhoto} alt="" />
+                            <img src={currentUser.profilePhoto} alt="" />
                             <p>
                                 <span>{currentUser.name}</span>
                                 <br />
@@ -93,7 +93,7 @@ const Rightbar = () => {
                                         :   data.map(friend => (
                                                 <div className="user online" key={friend.id}>
                                                     <div className="userInfo">
-                                                        <img src={"/upload/"+friend.profilePhoto} alt="" />
+                                                        <img src={friend.profilePhoto} alt="" />
                                                         <div className="online"/>
                                                         <span>{friend.name}</span>
                                                     </div>

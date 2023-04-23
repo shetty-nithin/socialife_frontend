@@ -63,7 +63,7 @@ const Navbar = () => {
                 <MarkEmailUnreadOutlinedIcon/>
                 <NotificationsActiveOutlinedIcon/>
                 <div className="user">
-                    <img src={"/upload/"+currentUser.profilePhoto} alt="" onClick={() => navigate(`/profile/${currentUser.id}`)}/>
+                    <img src={currentUser.profilePhoto} alt="" onClick={() => navigate(`/profile/${currentUser.id}`)}/>
                     <div className="logOut">
                         <span>{currentUser.username}</span>
                         {logOutMenu 
