@@ -1,70 +1,89 @@
-# Getting Started with Create React App
+# [socialife.com]()
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[![LinkedIn][linkedin-shield]][linkedin-url]
 
-## Available Scripts
+<br/>
 
-In the project directory, you can run:
+## About The Project
+This is an user interface for a social media website "socialife".
+<br/>
 
-### `npm start`
+### Features : 
+* Register / Login / Logout</br> An user can create an account and login into the account and logout of the account.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+* Use can update his/her profile info.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+* User can search for any socialife user and follow/unfollow them.
 
-### `npm test`
+* User can check his/her followers, followings and check the recommended user list and follow them.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* User can post text/img and can see the posts of friends. User can like and comment on the post.
 
-### `npm run build`
+* User can delete his/her posts.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Built with : 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+* [![MySQL][MySQL]][MySQL-url]
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+* [![Express.js][Express.js]][Express-url]
 
-### `npm run eject`
+* [![React.js][React.js]][React-url]
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+* [![Node.js][Node.js]][Node-url]
+<br/>
+<br/>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Installation
+<br/>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+1. Run the following command in the terminal to clone the repository
+   ```sh
+   git clone https://github.com/shetty-nithin/socialife_frontend
+   ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+2. Go inside the root folder
 
-## Learn More
+3. Install NPM packages
+   ```
+   npm install
+   ```
+   
+4. Create a .env file in the root folder and set up the environments as below.
+   ```
+   REACT_APP_API_URL = <Your backend API URL>
+   ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+5. Run the server
+   ```javascript
+   npm start
+   ```
+<br/>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Demo
 
-### Code Splitting
+#### User Interface <br/><br/>
+https://user-images.githubusercontent.com/62413993/197358467-b552ef60-f2ac-4b88-a70f-30f146084ad4.mp4
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+<!-- MARKDOWN LINKS -->
+[forks-shield]: https://img.shields.io/github/forks/github_username/repo_name.svg?style=for-the-badge
+[forks-url]: https://github.com/github_username/repo_name/network/members
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+[issues-shield]: https://img.shields.io/github/issues/github_username/repo_name.svg?style=for-the-badge
+[issues-url]: https://github.com/github_username/repo_name/issues
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=0072b1
+[linkedin-url]: https://www.linkedin.com/in/shetty-nithin/
 
-### Advanced Configuration
+[MySQL]: https://img.shields.io/badge/MySQL-F29111?style=for-the-badge&logo=mysql&logoColor=00758F
+[MySQL-url]: https://www.mysql.com/
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+[Express.js]: https://img.shields.io/badge/Express.js-D1D3D4?style=for-the-badge&logo=express&logoColor=4FC08D
+[Express-url]: https://expressjs.com/
 
-### Deployment
+[React.js]: https://img.shields.io/badge/React.js-FFFFFF?style=for-the-badge&logo=react&logoColor=20F0F7
+[React-url]: https://reactjs.org/
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[Node.js]: https://img.shields.io/badge/Node.js-215732?style=for-the-badge&logo=nodedotjs&logoColor=61DAFB
+[Node-url]: https://nodejs.org/en/
