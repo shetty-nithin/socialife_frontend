@@ -62,7 +62,7 @@ This is an user interface for a social media website "socialife".
 ## Demo
 
 #### User Interface <br/><br/>
-https://user-images.githubusercontent.com/62413993/197358467-b552ef60-f2ac-4b88-a70f-30f146084ad4.mp4
+https://github.com/shetty-nithin/socialife_frontend/assets/62413993/7de110e0-881d-4a6b-a0cc-195d18eea281
 
 
 <!-- MARKDOWN LINKS -->
